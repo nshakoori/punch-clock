@@ -1,0 +1,15 @@
+
+ <div class="container">
+    <% if user_signed_in? %>
+        <div class="d-flex justify-content-end">
+            <% if !current_user.punch_card %>
+                <div class="btn">
+                    <%= button_to "Get Punch Card", punch_cards_path, remote: true%>
+                </div>
+            <% end %>
+            <div class="btn">
+                <%= button_to "Logout", destroy_user_session_path, method: :delete%>
+            </div>
+        </div>
+    <% end %>
+</div>

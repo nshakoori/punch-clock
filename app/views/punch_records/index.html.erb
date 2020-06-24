@@ -1,0 +1,40 @@
+<div class="container"> 
+    <div class="d-flex flex-column bd-highlight mb-3">
+        <h2>Your Punch Records<h2>
+        <% if current_user.punch_card %>
+            <% if current_user.punch_card.punched_out %>
+                <div class="btn">
+                    <%= button_to "Punch In", punch_records_path, remote: true%>
+                </div>
+            <% else %>
+                <div class="btn">
+                    <%= button_to "Punch Out", @punch_record, remote: true, method: :put %>
+                </div>
+        <% end %>
+     </div>
+    <div class="container">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Punch In Time</th>
+                    <th scope="col">Punch Out Time</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% unless @punch_records.empty? %>
+                <% @punch_records.each do |record| %>
+                <tr>
+                    <td><%= record.punch_in %></td>
+                    <td><%= record.punch_out %></td>
+                </tr>
+                <% end %>
+            <% else %>
+                <tr>
+                <td >You have no records</td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<% end %>
