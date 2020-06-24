@@ -8,7 +8,7 @@
                 </div>
             <% else %>
                 <div class="btn">
-                    <%= button_to "Punch Out", @punch_record, remote: true, method: :put %>
+                    <%= button_to "Punch Out", {:action=>"punch_out", :controller=>"punch_records", id: @punch_record.id}, remote: true %>
                 </div>
         <% end %>
      </div>
